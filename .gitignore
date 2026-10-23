@@ -1,0 +1,19 @@
+# Secrets — never commit these
+.env
+.env.*
+!.env.example
+*.bak.*
+
+# Never ship a Hermes home directory
+state.db
+auth.json
+sessions/
+logs/
+
+# Build artifacts
+*.tgz
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*~
