@@ -16,7 +16,27 @@ metadata:
 Agent-executable runbook: stand up an always-on Hermes agent on a DigitalOcean droplet,
 reachable from a browser and the Hermex iPhone app over a self-hosted Headscale tailnet.
 The agent UI is never exposed publicly. This file is the runbook an agent EXECUTES;
-`hermes-droplet-setup.md` is the human-readable companion that explains the why — ship both.
+`hermes-droplet-setup.md` is the human-readable companion that explains the why, not just
+the how. It is **not** installed beside this file — fetch it when needed:
+
+```
+web_extract("https://raw.githubusercontent.com/tj597/hermes-droplet-setup/main/hermes-droplet-setup.md")
+```
+
+## Install (if you are reading this from GitHub)
+
+You cannot load this skill into your own current session — skills load at session start.
+Clone, copy, then have the user restart Hermes:
+
+```bash
+git clone https://github.com/tj597/hermes-droplet-setup ~/hermes-droplet-setup
+mkdir -p ~/.hermes/skills/devops
+cp -R ~/hermes-droplet-setup/skills/devops/hermes-droplet-provisioning ~/.hermes/skills/devops/
+```
+
+After the restart, `skill_view(name='hermes-droplet-provisioning')` works and the runbook
+below is live. Do not attempt the steps in this file before that restart — the intake and
+the AGENT/HUMAN/CHECKPOINT tagging only function when the skill is loaded.
 
 ## When to Use
 
