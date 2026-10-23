@@ -8,11 +8,22 @@ Two artifacts, two audiences:
 
 | Path | For |
 |---|---|
-| `hermes-droplet-setup.md` | Humans. Read it top to bottom, or hand it to someone who wants to understand what each step does and why. |
-| `skills/devops/hermes-droplet-provisioning/` | Agents. A runbook an agent loads and executes, stopping at the HUMAN and CHECKPOINT steps. |
+| [`hermes-droplet-setup.md`](https://github.com/tj597/hermes-droplet-setup/blob/main/hermes-droplet-setup.md) | Humans. Read it top to bottom, or hand it to someone who wants to understand what each step does and why. |
+| [`skills/devops/hermes-droplet-provisioning/`](https://github.com/tj597/hermes-droplet-setup/tree/main/skills/devops/hermes-droplet-provisioning) | Agents. A runbook an agent loads and executes, stopping at the HUMAN and CHECKPOINT steps. |
 
 Ship them together: the skill assumes the reader can consult the guide for the reasoning
 behind each step.
+
+## Repository layout
+
+| File | What it is |
+|---|---|
+| [`hermes-droplet-setup.md`](https://github.com/tj597/hermes-droplet-setup/blob/main/hermes-droplet-setup.md) | The human-readable guide — 12 parts plus appendices. |
+| [`skills/devops/hermes-droplet-provisioning/SKILL.md`](https://github.com/tj597/hermes-droplet-setup/blob/main/skills/devops/hermes-droplet-provisioning/SKILL.md) | The agent-executable runbook. |
+| [`skills/devops/hermes-droplet-provisioning/scripts/add-env-secret.sh`](https://github.com/tj597/hermes-droplet-setup/blob/main/skills/devops/hermes-droplet-provisioning/scripts/add-env-secret.sh) | Hidden-prompt secret writer — keeps secrets out of shell history and chat. |
+| [`README.md`](https://github.com/tj597/hermes-droplet-setup/blob/main/README.md) | This file. |
+| [`LICENSE`](https://github.com/tj597/hermes-droplet-setup/blob/main/LICENSE) | MIT. |
+| [`.gitignore`](https://github.com/tj597/hermes-droplet-setup/blob/main/.gitignore) | Blocks `.env`, `*.bak.*`, and Hermes state files. |
 
 ## Install the skill
 
@@ -40,7 +51,9 @@ It is **not unattended**. Expect to supply credentials and make choices at marke
 
 ## Phone setup (Hermex)
 
-Part 11 of the guide, step 12 of the skill. Two App Store apps are required:
+Part 11 of the [guide](https://github.com/tj597/hermes-droplet-setup/blob/main/hermes-droplet-setup.md),
+step 12 of the [skill](https://github.com/tj597/hermes-droplet-setup/blob/main/skills/devops/hermes-droplet-provisioning/SKILL.md).
+Two App Store apps are required:
 
 - **Tailscale** — the WireGuard client.
 - **Hermex** — a native third-party iPhone/iPad client for `hermes-webui`
@@ -55,9 +68,10 @@ Account-wide credentials — the DigitalOcean PAT, the Porkbun API keys — stay
 workstation. The droplet receives only its inference key. The droplet is the exposed
 machine, so it gets the least privilege.
 
-The provided `.gitignore` blocks `.env`, `*.bak.*`, and Hermes state files. Never
-`git init` at or above `~/.hermes/` — that tree holds live credentials.
+The provided [`.gitignore`](https://github.com/tj597/hermes-droplet-setup/blob/main/.gitignore)
+blocks `.env`, `*.bak.*`, and Hermes state files. Never `git init` at or above
+`~/.hermes/` — that tree holds live credentials.
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see [`LICENSE`](https://github.com/tj597/hermes-droplet-setup/blob/main/LICENSE).
